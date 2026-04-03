@@ -30,7 +30,7 @@ CONF = ConfConstants()
 class MainConstants:
     """Main constants."""
 
-    DOMAIN = "judo_ksafe_era"
+    DOMAIN = "judo_rest_api"
     SCAN_INTERVAL = "60"  # timedelta(seconds=60))
     UNIQUE_ID = "unique_id"
     APPID = 100
