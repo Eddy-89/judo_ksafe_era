@@ -31,7 +31,7 @@ class MyCoordinator(DataUpdateCoordinator):
         super().__init__(
             hass,
             log,
-            name="judo_rest_api-coordinator",
+            name="judo_ksafe_era-coordinator",
             update_interval=timedelta(
                 seconds=int(p_config_entry.data[CONF.SCAN_INTERVAL])
             ),
