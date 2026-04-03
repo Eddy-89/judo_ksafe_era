@@ -1,3 +1,5 @@
+# This integration was originally developed through the excellent work of https://github.com/OStrama/judo_rest_api.git. Many thanks to his work.
+
 # Version 1.1.1
 Added control for changing limit values.
 
@@ -25,7 +27,7 @@ This integration lets you monitor and control your Judo water treatment device l
 
 Add this repository to HACS.
 * In the HACS GUI, select "Custom repositories"
-* Enter the following repository URL: https://github.com/OStrama/judo_rest_api
+* Enter the following repository URL: https://github.com/Eddy-89/judo_ksafe_era
 * Category: Integration
 * After adding the integration, restart Home Assistant.
 * Now press the button "Add Integration" in Configuration -> Integrations to install it in Home assistant.
@@ -64,6 +66,3 @@ The "Scan interval" determines how often the REST API is polled. The default val
 # Disclaimer
 The developers of this integration are not affiliated with Judo. They have created the integration as open source in their spare time on the basis of publicly accessible information. 
 The use of the integration is at the user's own risk and responsibility. The developers are not liable for any damages arising from the use of the integration.
-
-
-More coming soon to this theater ;-)
