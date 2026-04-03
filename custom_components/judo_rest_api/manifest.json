@@ -1,5 +1,5 @@
 {
-  "domain": "judo_ksafe_era",
+  "domain": "judo_rest_api",
   "name": "Judo K Safe+ API",
   "codeowners": ["@OStrama"],
   "config_flow": true,
