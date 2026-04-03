@@ -8,7 +8,7 @@
 			"path": "../../../weishaupt_modbus"
 		},
 		{
-			"name": "judo_rest_api",
+			"name": "judo_ksafe_era",
 			"path": "../.."
 		}
 	],
