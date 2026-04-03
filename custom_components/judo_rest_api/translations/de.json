@@ -6,7 +6,7 @@
         "error": {
             "cannot_connect": "Verbindung fehlgeschlagen",
             "invalid_auth": "Authentifizierung fehlerhaft",
-            "unknown": "Unerwarteted Fehler"
+            "unknown": "Unerwarteter Fehler"
         },
         "step": {
             "user": {
@@ -52,6 +52,15 @@
             },
             "salt_storage_mass": {
                 "name": "Salzvorrat Masse gesamt"
+            },
+            "max_extraction_duration": {
+                "name": "Maximale Entnahmedauer"
+            },
+            "max_extraction_flow": {
+                "name": "Maximale Entnahmemenge (Durchfluss)"
+            },
+            "max_extraction_volume": {
+                "name": "Maximaler Volumenstrom (am Stück)"
             }
         },
         "button": {
