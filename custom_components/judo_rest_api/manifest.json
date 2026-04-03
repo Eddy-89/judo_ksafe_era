@@ -1,5 +1,5 @@
 {
-  "domain": "judo_rest_api,
+  "domain": "judo_rest_api",
   "name": "Judo REST API",
   "codeowners": ["@Eddy-89"],
   "config_flow": true,
