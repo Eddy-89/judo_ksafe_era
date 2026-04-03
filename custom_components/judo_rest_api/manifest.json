@@ -1,7 +1,7 @@
 {
   "domain": "judo_rest_api",
   "name": "Judo K Safe+ API",
-  "codeowners": ["@OStrama"],
+  "codeowners": ["@Eddy-89"],
   "config_flow": true,
   "documentation": "https://github.com/Eddy-89/judo_ksafe_era/",
   "iot_class": "local_polling",
