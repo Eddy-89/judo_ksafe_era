@@ -1,82 +1,82 @@
 {
     "config": {
         "abort": {
-            "already_configured": "Account is already configured"
+            "already_configured": "Account ist bereits konfiguriert"
         },
         "error": {
-            "cannot_connect": "Failed to connect",
-            "invalid_auth": "Invalid authentication",
-            "unknown": "Unexpected error"
+            "cannot_connect": "Verbindung fehlgeschlagen",
+            "invalid_auth": "Authentifizierung fehlerhaft",
+            "unknown": "Unerwarteter Fehler"
         },
         "step": {
             "user": {
                 "data": {
                     "Device-Postfix": "Device postfix",
-                    "scan_interval": "API poll interval (default = 60 sec)",
-                    "host": "Host name or IP address",
+                    "scan_interval": "API-Abfrageintervall (standard = 60 s)",
+                    "host": "Hostname oder IP Adresse",
                     "port": "HTTP Port",
-                    "username": "User name",
-                    "password": "Password"
+                    "username": "Benutzername",
+                    "password": "Passwor1"
                 }
             },
             "reconfigure": {
                 "data": {
                     "Device-Postfix": "Device postfix",
-                    "scan_interval": "API poll interval (default = 60 sec)",
-                    "host": "Host name or IP address",
+                    "scan_interval": "API-Abfrageintervall (standard = 60 s)",
+                    "host": "Hostname oder IP Adresse",
                     "port": "HTTP Port",
-                    "username": "User name",
-                    "password": "Password"
+                    "username": "Benutzername",
+                    "password": "Passwor1"
                 }
             }
         }
     },
     "device": {
         "dev_statistics": {
-            "name": "Judo Statistics{postfix}"
+            "name": "Judo Statistik{postfix}"
         },
         "dev_system": {
             "name": "Judo System{postfix}"
         },
         "dev_unknown": {
-            "name": "Judo Unknown{postfix}"
+            "name": "Judo Unbekannt{postfix}"
         }
     },
     "entity": {
         "number": {
             "water_hardeness": {
-                "name": "Water hardeness"
+                "name": "Wasserhärte"
             },
             "salt_warning": {
-                "name": "Salt warning"
+                "name": "Salzwarnung"
             },
             "salt_storage_mass": {
-                "name": "Salt storage mass total"
+                "name": "Salzvorrat Masse gesamt"
             },
             "max_extraction_duration": {
-                "name": "Max. extraction duration"
+                "name": "Maximale Entnahmedauer"
             },
             "max_extraction_flow": {
-                "name": "Max. extraction flow"
+                "name": "Maximale Entnahmemenge (Durchfluss)"
             },
             "max_extraction_volume": {
-                "name": "Max. extraction volume"
+                "name": "Maximaler Volumenstrom (am Stück)"
             }
         },
         "button": {
             "leakage_protection_close": {
-                "name": "Close leakage protection"
+                "name": "Schließe Leckageschutz"
             },
             "leakage_protection_open": {
-                "name": "Open leakage protection"
+                "name": "Öffne Leckageschutz"
             },
             "start_regeneration": {
-                "name": "Start regeneration"
+                "name": "Regeneration starten"
             }
         },
         "select": {
             "salt_refill_mass": {
-                "name": "Salt refill",
+                "name": "Salz nachfüllen",
                 "state": {
                     "mass_0kg": "0 kg",
                     "mass_1kg": "1 kg",
@@ -91,16 +91,16 @@
         },
         "sensor": {
             "device_number": {
-                "name": "Device number"
+                "name": "Gerätenummer"
             },
             "software_version": {
-                "name": "Software version"
+                "name": "Softwareversion"
             },
             "day_statistics": {
-                "name": "Statistics"
+                "name": "Statistik"
             },
             "device_type": {
-                "name": "Device Type",
+                "name": "Gerätetyp",
                 "state": {
                     "aqua_tenera_d": "Aqua Tenera D",
                     "aqua_tenera_e": "Aqua Tenera E",
@@ -136,36 +136,36 @@
                 }
             },
             "salt_storage_mass": {
-                "name": "Salt storage mass"
+                "name": "Salzvorrat Masse"
             },
             "salt_storage_days": {
-                "name": "Salt storage days"
+                "name": "Salzvorrat Tage"
             },
             "water_total": {
-                "name": "Water total"
+                "name": "Gesamtwassermenge"
             },
             "water_treated": {
-                "name": "Water treated"
+                "name": "Weichwassermenge"
             },
             "service_contact": {
-                "name": "Service contact"
+                "name": "Kundendienst-Kontakt"
             },
             "operating_days": {
-                "name": "Operating days"
+                "name": "Betriebszeit Tage"
             },
             "operating_minutes": {
-                "name": "Operating minutes"
+                "name": "Betriebszeit Minuten"
             },
             "operating_hours": {
-                "name": "Operating hours"
+                "name": "Betriebszeit Stunden"
             },
             "install_date": {
-                "name": "Date of commissioning"
+                "name": "Inbetriebnahmedatum"
             },
             "leakage_protection": {
-                "name": "Leakage protection"
+                "name": "Leckageschutz"
             }
         }
     },
-    "title": "Judo Water Treatment"
+    "title": "Judo Wasseraufbereitung"
 }

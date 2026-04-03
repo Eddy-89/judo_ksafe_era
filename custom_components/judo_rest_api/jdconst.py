@@ -242,6 +242,60 @@ REST_SYS_ITEMS: list[RestItem] = [
     RestItem(address_write="3C00", write_bytes = 0, write_index=0, mformat=FORMATS.BUTTON, mtype=TYPES.BUTTON, device=DEVICES.SYS, params=PARAMS_CLOSE, translation_key="leakage_protection_close"),
     RestItem(address_write="3D00", write_bytes = 0, write_index=0, mformat=FORMATS.BUTTON, mtype=TYPES.BUTTON, device=DEVICES.SYS, params=PARAMS_OPEN, translation_key="leakage_protection_open"),
     RestItem(address_write="350000", write_bytes = 0, write_index=0, mformat=FORMATS.BUTTON, mtype=TYPES.BUTTON, device=DEVICES.SYS, params=PARAMS_REG, translation_key="start_regeneration"),
+# Max. Entnahmdauer (1 Byte, Minuten, 0 = deaktiviert)
+    RestItem(
+        address_read="3E00", read_bytes=2, read_index=0,
+        address_write="3E00", write_bytes=2, write_index=0,
+        mformat=FORMATS.NUMBER, mtype=TYPES.NUMBER,
+        device=DEVICES.SYS,
+        params={
+            "min": 0,
+            "max": 255,
+            "step": 1,
+            "precision": 0,
+            "unit": UnitOfTime.MINUTES,
+            "stateclass": SensorStateClass.MEASUREMENT,
+            "icon": "mdi:timer-outline",
+        },
+        translation_key="max_extraction_duration",
+        entity_category=EntityCategory.CONFIG,
+    ),
+    # Max. Entnahmemenge / max. Durchfluss (2 Byte, Liter/Stunde)
+    RestItem(
+        address_read="3F00", read_bytes=2, read_index=0,
+        address_write="3F00", write_bytes=2, write_index=0,
+        mformat=FORMATS.NUMBER, mtype=TYPES.NUMBER,
+        device=DEVICES.SYS,
+        params={
+            "min": 0,
+            "max": 65535,
+            "step": 1,
+            "precision": 0,
+            "unit": UnitOfVolumeFlowRate.LITERS_PER_HOUR,
+            "stateclass": SensorStateClass.MEASUREMENT,
+            "icon": "mdi:water-pump",
+        },
+        translation_key="max_extraction_flow",
+        entity_category=EntityCategory.CONFIG,
+    ),
+    # Max. Volumenstrom / max. Wassermenge am Stück (2 Byte, Liter)
+    RestItem(
+        address_read="4000", read_bytes=2, read_index=0,
+        address_write="4000", write_bytes=2, write_index=0,
+        mformat=FORMATS.NUMBER, mtype=TYPES.NUMBER,
+        device=DEVICES.SYS,
+        params={
+            "min": 0,
+            "max": 65535,
+            "step": 1,
+            "precision": 0,
+            "unit": UnitOfVolume.LITERS,
+            "stateclass": SensorStateClass.MEASUREMENT,
+            "icon": "mdi:water-outline",
+        },
+        translation_key="max_extraction_volume",
+        entity_category=EntityCategory.CONFIG,
+    ),
 
 #    RestItem(address_read="5600", read_bytes = 2, read_index=0,address_write="5600", write_bytes = 2, write_index=0, mformat=FORMATS.STATUS, mtype=TYPES.SELECT_NOIF, device=DEVICES.SYS, params= PARAMS_MASS_REFILL, resultlist=SALT_MASS, translation_key="salt_refill_mass"),
 ]
