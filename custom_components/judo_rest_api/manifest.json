@@ -1,12 +1,12 @@
 {
-  "domain": "judo_rest_api",
-  "name": "Judo Rest API",
+  "domain": "judo_ksafe_era",
+  "name": "Judo K Safe+ API",
   "codeowners": ["@OStrama"],
   "config_flow": true,
-  "documentation": "https://github.com/OStrama/judo_rest_api/",
+  "documentation": "https://github.com/Eddy-89/judo_ksafe_era/",
   "iot_class": "local_polling",
-  "issue_tracker": "https://github.com/OStrama/judo_rest_api/issues",
-  "loggers": ["judo_rest_api"],
+  "issue_tracker": "https://github.com/Eddy-89/judo_ksafe_era/issues",
+  "loggers": ["judo_ksafe_era"],
   "requirements": [],
   "version": "1.1.1"
 }
