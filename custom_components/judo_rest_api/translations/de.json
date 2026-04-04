@@ -54,13 +54,16 @@
                 "name": "Salzvorrat Masse gesamt"
             },
             "max_extraction_duration": {
-                "name": "Maximale Entnahmedauer"
+                "name": "Maximale Entnahmedauer",
+                "description": "Nur Schreiben • HA merkt sich den letzten gesetzten Wert"
             },
             "max_extraction_flow": {
-                "name": "Maximale Entnahmemenge (Durchfluss)"
+                "name": "Maximale Entnahmemenge (Durchfluss)",
+                "description": "Nur Schreiben • HA merkt sich den letzten gesetzten Wert"
             },
             "max_extraction_volume": {
-                "name": "Maximaler Volumenstrom (am Stück)"
+                "name": "Maximaler Volumenstrom (am Stück)",
+                "description": "Nur Schreiben • HA merkt sich den letzten gesetzten Wert"
             }
         },
         "button": {
