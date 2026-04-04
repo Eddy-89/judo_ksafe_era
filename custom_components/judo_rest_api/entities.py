@@ -3,7 +3,7 @@
 import logging
 
 from homeassistant.components.sensor import SensorEntity, SensorStateClass
-from homeassistant.components.number import NumberEntity
+from homeassistant.components.number import NumberEntity, NumberMode
 from homeassistant.components.switch import SwitchEntity
 from homeassistant.components.button import ButtonEntity
 from homeassistant.components.select import SelectEntity
@@ -11,6 +11,7 @@ from homeassistant.core import callback
 from homeassistant.helpers.device_registry import DeviceInfo
 from homeassistant.helpers.entity import Entity
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
+from homeassistant.helpers.restore_state import RestoreEntity
 
 from .configentry import MyConfigEntry
 from .const import CONF, CONST, FORMATS, TYPES
@@ -111,6 +112,8 @@ class MyEntity(Entity):
             if icon is not None:
                 self._attr_icon = icon
 
+            self._attr_assumed_state = self._rest_item.params.get("assumed_state", False)
+
     def my_device_info(self) -> DeviceInfo:
         """Build the device info with dynamic values."""
         # Default fallback values
@@ -191,12 +194,8 @@ class MySensorEntity(CoordinatorEntity, SensorEntity, MyEntity):
         self.async_write_ha_state()
 
 
-class MyNumberEntity(CoordinatorEntity, NumberEntity, MyEntity):  # pylint: disable=W0223
-    """Represent a Number Entity.
-
-    Class that represents a number entity derived from NumberEntity
-    and decorated with general parameters from MyEntity
-    """
+class MyNumberEntity(CoordinatorEntity, NumberEntity, MyEntity, RestoreEntity):
+    """Represent a Number Entity with State Restoration."""
 
     def __init__(
         self,
@@ -205,23 +204,54 @@ class MyNumberEntity(CoordinatorEntity, NumberEntity, MyEntity):  # pylint: disa
         coordinator: MyCoordinator,
         idx,
     ) -> None:
-        """Initialize NyNumberEntity."""
+        """Initialize MyNumberEntity."""
         super().__init__(coordinator, context=idx)
         self._idx = idx
         MyEntity.__init__(self, config_entry, rest_item, coordinator)
 
+        # Mode (Box) setzen
+        if self._rest_item.params is not None:
+            if self._rest_item.params.get("mode") == "box":
+                self._attr_mode = NumberMode.BOX
+
+    @property
+    def available(self) -> bool:
+        """Return True if entity is available."""
+        # Write-only Entitäten (assumed_state) sind immer verfügbar
+        if self._attr_assumed_state:
+            return True
+        return super().available
+
+    async def async_added_to_hass(self) -> None:
+        """Restore last state from database on startup."""
+        await super().async_added_to_hass()
+
+        # Nur für Entitäten ohne Rückkanal (assumed_state)
+        if self._attr_assumed_state:
+            last_state = await self.async_get_last_state()
+            if last_state is not None and last_state.state not in ("unknown", "unavailable"):
+                try:
+                    val = float(last_state.state)
+                    self._attr_native_value = val
+                    self._rest_item.state = val
+                    log.debug("Restored %s to %s", self.entity_id, val)
+                except ValueError:
+                    pass
+
     @callback
     def _handle_coordinator_update(self) -> None:
         """Handle updated data from the coordinator."""
-        self._attr_native_value = self._rest_item.state
+        # Verhindert, dass der Coordinator den restored Wert mit 'None' überschreibt
+        if not self._attr_assumed_state:
+            self._attr_native_value = self._rest_item.state
         self.async_write_ha_state()
 
     async def async_set_native_value(self, value: float) -> None:
-        """Send value over modbus and refresh HA."""
+        """Update the current value and send to device."""
         ro = RestObject(self._rest_api, self._rest_item)
-        await ro.setvalue(value)  # rest_item.state will be set inside ro.setvalue
-        #        await self._coordinator.get_value(self._rest_item)
-        self._attr_native_value = self._rest_item.state
+        await ro.setvalue(value)
+        self._attr_native_value = value
+        self._rest_item.state = value
         self.async_write_ha_state()
 
 

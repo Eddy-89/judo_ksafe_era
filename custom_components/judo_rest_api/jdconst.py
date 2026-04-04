@@ -224,7 +224,7 @@ REST_SYS_ITEMS: list[RestItem] = [
     RestItem( address_read="0100", read_bytes = 3, read_index=0, mformat=FORMATS.SW_VERSION, mtype=TYPES.SENSOR, device=DEVICES.SYS, params=PARAMS_INFO, translation_key="software_version", entity_category=EntityCategory.DIAGNOSTIC),
 
     RestItem( address_read="5100", read_bytes = 2, read_index=0, address_write="3000", write_bytes = 1, write_index=0, mformat=FORMATS.NUMBER, mtype=TYPES.NUMBER, device=DEVICES.SYS, params=PARAMS_GDH,translation_key="water_hardeness"),
-    RestItem( address_read="5700", read_bytes = 1, read_index=0, address_write="5700", write_bytes = 1, write_index=0, mformat=FORMATS.NUMBER, mtype=TYPES.NUMBER, device=DEVICES.SYS, params=PARAMS_DAYS,translation_key="salt_warning", entity_category=EntityCategory.CONFIG),
+    RestItem( address_read="5700", read_bytes = 1, read_index=0, address_write="5700", write_bytes = 1, write_index=0, mformat=FORMATS.NUMBER, mtype=TYPES.NUMBER, device=DEVICES.SYS, params={**PARAMS_DAYS, "mode": "box"},translation_key="salt_warning", entity_category=EntityCategory.CONFIG,),
 
 #   RestItem( address_read="5600", read_bytes = 2, read_index=0, mformat=FORMATS.NUMBER, mtype=TYPES.SENSOR, device=DEVICES.SYS, params= PARAMS_MASS, translation_key="salt_storage_mass"),
     RestItem( address_read="5600", read_bytes = 2, read_index=0, address_write="5600", write_bytes = 2, write_index=0, mformat=FORMATS.NUMBER, mtype=TYPES.NUMBER, device=DEVICES.SYS, params=PARAMS_MASS_REFILL, translation_key="salt_storage_mass", entity_category=EntityCategory.CONFIG),
@@ -251,7 +251,7 @@ REST_SYS_ITEMS: list[RestItem] = [
         params={
             "min": 0,
             "max": 255,
-            "step": 1,
+            "step": 5,
             "precision": 0,
             "unit": UnitOfTime.MINUTES,
             "icon": "mdi:timer-outline",
@@ -270,7 +270,7 @@ REST_SYS_ITEMS: list[RestItem] = [
         params={
             "min": 0,
             "max": 65535,
-            "step": 1,
+            "step": 100,
             "precision": 0,
             "unit": UnitOfVolumeFlowRate.LITERS_PER_HOUR,
             "icon": "mdi:water-pump",
@@ -289,7 +289,7 @@ REST_SYS_ITEMS: list[RestItem] = [
         params={
             "min": 0,
             "max": 65535,
-            "step": 1,
+            "step": 100,
             "precision": 0,
             "unit": UnitOfVolume.LITERS,
             "icon": "mdi:water-outline",
