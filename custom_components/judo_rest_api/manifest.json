@@ -8,5 +8,5 @@
   "issue_tracker": "https://github.com/Eddy-89/judo_ksafe_era/issues",
   "loggers": ["judo_rest_api"],
   "requirements": [],
-  "version": "1.2.0"
+  "version": "1.2.1"
 }
