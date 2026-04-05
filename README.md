@@ -1,6 +1,6 @@
 # This integration was originally developed through the excellent work of https://github.com/OStrama/judo_rest_api.git. Many thanks to his work.
 
-# Version 1.1.1
+# Version 1.2.2
 Added control for changing limit values.
 
 # judo_rest_api
